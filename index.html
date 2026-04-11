@@ -3,35 +3,2090 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Money Mindset - Think Rich. Be Free.</title>
+  <title>Money Mindset -- The Financial Psychology App</title>
+  <meta name="description" content="Learn the psychology behind every money decision. 7 pillars of financial education, interactive simulations, and a gamified progression system. Free on iOS.">
+  <meta name="theme-color" content="#0A0E14">
+  <link rel="icon" type="image/png" href="icon.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Money Mindset -- Money Talks. Learn the Language.">
+  <meta property="og:description" content="The financial psychology app that teaches you why you make the money decisions you do -- and how to make better ones.">
+  <meta property="og:image" content="https://money-mindsets.com/og-image.png">
+  <meta property="og:url" content="https://money-mindsets.com/">
+  <meta property="og:site_name" content="Money Mindset">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Money Mindset -- Money Talks. Learn the Language.">
+  <meta name="twitter:description" content="The financial psychology app that teaches you why you make the money decisions you do -- and how to make better ones.">
+  <meta name="twitter:image" content="https://money-mindsets.com/og-image.png">
+
+  <link rel="canonical" href="https://money-mindsets.com/">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Money Mindset",
+    "operatingSystem": "iOS",
+    "applicationCategory": "EducationApplication",
+    "description": "Financial psychology education app with interactive simulations, gamified progression, and 400+ behavioral insight cards.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0A0E14; color: #E0E0E0; }
-    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
-    h1 { color: #00D09E; font-size: 2.5rem; margin-bottom: 8px; }
-    .tagline { color: #9CA3AF; font-size: 1.2rem; margin-bottom: 40px; }
-    p { line-height: 1.7; margin-bottom: 16px; color: #D1D5DB; }
-    a { color: #00D09E; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid #1F2937; color: #6B7280; font-size: 0.875rem; }
-    .links { margin-top: 24px; }
-    .links a { margin-right: 24px; }
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #0A0E14;
+      --surface: #131920;
+      --surface-light: #1A2230;
+      --surface-elevated: #212B3B;
+      --primary: #00D09E;
+      --primary-light: #33DEBB;
+      --primary-dark: #00A87D;
+      --primary-surface: #0D2E26;
+      --text-primary: #F1F5F9;
+      --text-secondary: #B8C4D1;
+      --text-tertiary: #8494A7;
+      --error: #FF6B6B;
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glass-bg: rgba(255, 255, 255, 0.03);
+      --glow: rgba(0, 208, 158, 0.12);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --radius-xxl: 24px;
+      --radius-pill: 100px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 72px;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ===================== NAV ===================== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10, 14, 20, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .nav.scrolled {
+      border-bottom-color: var(--glass-border);
+      background: rgba(10, 14, 20, 0.95);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .nav-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+    }
+
+    .nav-name {
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      color: var(--text-tertiary);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-cta {
+      background: var(--primary);
+      color: var(--bg) !important;
+      font-weight: 700 !important;
+      padding: 10px 24px;
+      border-radius: var(--radius-pill);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(0, 208, 158, 0.25);
+      color: var(--bg) !important;
+    }
+
+    /* Mobile nav handled by hamburger menu below */
+
+    /* ===================== HERO ===================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 208, 158, 0.06) 0%, transparent 65%);
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .hero-grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 80px;
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    .hero-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: var(--radius-pill);
+      background: var(--primary-surface);
+      border: 1px solid rgba(0, 208, 158, 0.2);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      margin-bottom: 28px;
+    }
+
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+      animation: badge-pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes badge-pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; box-shadow: 0 0 8px var(--primary); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 3.8rem);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 .text-gradient {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--text-secondary);
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--primary);
+      color: var(--bg);
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 16px 32px;
+      border-radius: var(--radius-pill);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0, 208, 158, 0.3);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 16px 20px;
+      transition: color 0.2s;
+    }
+
+    .btn-secondary:hover {
+      color: var(--text-primary);
+    }
+
+    .hero-proof {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .proof-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .proof-number {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.5px;
+    }
+
+    .proof-label {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      font-weight: 500;
+    }
+
+    .proof-divider {
+      width: 1px;
+      height: 36px;
+      background: var(--glass-border);
+    }
+
+    /* Phone Mockup */
+    .hero-phone {
+      flex-shrink: 0;
+      width: 300px;
+      position: relative;
+    }
+
+    .phone-frame {
+      width: 280px;
+      height: 580px;
+      border-radius: 40px;
+      border: 3px solid rgba(255,255,255,0.12);
+      background: var(--surface);
+      position: relative;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.05),
+        0 25px 60px rgba(0,0,0,0.5),
+        0 0 120px rgba(0, 208, 158, 0.08);
+    }
+
+    .phone-notch {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 28px;
+      background: #000;
+      border-radius: 0 0 20px 20px;
+      z-index: 3;
+    }
+
+    .phone-screen {
+      padding: 40px 20px 20px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .phone-greeting {
+      font-size: 0.7rem;
+      color: var(--text-tertiary);
+      margin-bottom: 4px;
+    }
+
+    .phone-user-name {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .phone-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .phone-stat {
+      background: var(--surface-light);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      border: 1px solid var(--glass-border);
+    }
+
+    .phone-stat-value {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .phone-stat-label {
+      font-size: 0.6rem;
+      color: var(--text-tertiary);
+      font-weight: 500;
+    }
+
+    .phone-card {
+      background: var(--surface-light);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+
+    .phone-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .phone-card-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      background: rgba(0, 208, 158, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .phone-card-icon svg {
+      width: 16px;
+      height: 16px;
+      color: var(--primary);
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .phone-card-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .phone-card-sub {
+      font-size: 0.65rem;
+      color: var(--text-tertiary);
+    }
+
+    .phone-progress-bar {
+      height: 6px;
+      background: var(--surface-elevated);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .phone-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      border-radius: 3px;
+      width: 65%;
+    }
+
+    .phone-xp-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 6px;
+    }
+
+    .phone-xp-text {
+      font-size: 0.6rem;
+      color: var(--text-tertiary);
+      font-weight: 600;
+    }
+
+    .phone-streak-row {
+      display: flex;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .phone-streak-day {
+      flex: 1;
+      height: 28px;
+      border-radius: 6px;
+      background: var(--surface-elevated);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.5rem;
+      color: var(--text-tertiary);
+      font-weight: 600;
+    }
+
+    .phone-streak-day.active {
+      background: var(--primary-surface);
+      border: 1px solid rgba(0, 208, 158, 0.3);
+      color: var(--primary);
+    }
+
+    .phone-streak-day.current {
+      background: var(--primary);
+      color: var(--bg);
+    }
+
+    @media (max-width: 960px) {
+      .hero-content { flex-direction: column; text-align: center; gap: 48px; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-actions { justify-content: center; }
+      .hero-proof { justify-content: center; }
+      .hero-phone { order: -1; }
+      .phone-frame { width: 240px; height: 500px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-phone { display: none; }
+    }
+
+    /* ===================== SECTIONS ===================== */
+    .section-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 24px;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 560px;
+      line-height: 1.65;
+    }
+
+    .section-header {
+      margin-bottom: 56px;
+    }
+
+    .section-header-center {
+      text-align: center;
+    }
+
+    .section-header-center .section-subtitle {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ===================== PROBLEM SECTION ===================== */
+    .problem {
+      background: var(--surface);
+      border-top: 1px solid var(--glass-border);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .problem-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .problem-stat {
+      padding: 28px;
+      border-radius: var(--radius-xl);
+      background: var(--surface-light);
+      border: 1px solid var(--glass-border);
+      transition: border-color 0.3s;
+    }
+
+    .problem-stat:hover {
+      border-color: rgba(255, 107, 107, 0.2);
+    }
+
+    .problem-stat-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--error);
+      letter-spacing: -1px;
+      margin-bottom: 4px;
+    }
+
+    .problem-stat-text {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .problem-text h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .problem-text p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .problem-text .accent {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .problem-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    /* ===================== FEATURES ===================== */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .feature-card {
+      padding: 32px 28px;
+      border-radius: var(--radius-xl);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      transition: transform 0.3s, border-color 0.3s, background 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0, 208, 158, 0), transparent);
+      transition: background 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 208, 158, 0.2);
+      background: rgba(0, 208, 158, 0.02);
+    }
+
+    .feature-card:hover::before {
+      background: linear-gradient(90deg, transparent, rgba(0, 208, 158, 0.4), transparent);
+    }
+
+    .feature-icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: rgba(0, 208, 158, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .feature-icon-wrap svg {
+      width: 22px;
+      height: 22px;
+      color: var(--primary);
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .feature-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .feature-card .feature-tag {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      background: var(--primary-surface);
+      color: var(--primary);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    @media (max-width: 960px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .features-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===================== HOW IT WORKS ===================== */
+    .how-it-works {
+      background: var(--surface);
+      border-top: 1px solid var(--glass-border);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary-surface), rgba(0, 208, 158, 0.15), var(--primary-surface));
+    }
+
+    .step {
+      text-align: center;
+      position: relative;
+    }
+
+    .step-number {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--surface-light);
+      border: 2px solid rgba(0, 208, 158, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--primary);
+      position: relative;
+      z-index: 1;
+    }
+
+    .step h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 768px) {
+      .steps {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 24px;
+      }
+      .steps::before { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .steps { grid-template-columns: 1fr; }
+    }
+
+    /* ===================== LEVEL PROGRESSION ===================== */
+    .progression-track {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      overflow-x: auto;
+      padding: 12px 0 20px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .progression-track::-webkit-scrollbar { display: none; }
+
+    .level-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 140px;
+      position: relative;
+      padding: 0 8px;
+    }
+
+    .level-node:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 24px;
+      left: calc(50% + 24px);
+      width: calc(100% - 48px);
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), rgba(0, 208, 158, 0.2));
+    }
+
+    .level-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+      border: 2px solid;
+    }
+
+    .level-tier-1 { background: var(--surface-light); border-color: var(--text-tertiary); color: var(--text-tertiary); }
+    .level-tier-2 { background: rgba(0, 208, 158, 0.08); border-color: rgba(0, 208, 158, 0.3); color: var(--primary); }
+    .level-tier-3 { background: rgba(0, 208, 158, 0.12); border-color: rgba(0, 208, 158, 0.5); color: var(--primary); }
+    .level-tier-4 { background: rgba(0, 208, 158, 0.18); border-color: var(--primary); color: var(--primary); box-shadow: 0 0 20px var(--glow); }
+
+    .level-name {
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+      text-align: center;
+    }
+
+    .level-subtitle {
+      font-size: 0.65rem;
+      color: var(--text-tertiary);
+      text-align: center;
+    }
+
+    /* ===================== SOCIAL PROOF ===================== */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .testimonial {
+      padding: 28px;
+      border-radius: var(--radius-xl);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+    }
+
+    .testimonial-text {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testimonial-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--surface-elevated);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: var(--primary);
+    }
+
+    .testimonial-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .testimonial-detail {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+    }
+
+    @media (max-width: 768px) {
+      .testimonials-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===================== PRICING ===================== */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      padding: 40px 32px;
+      border-radius: var(--radius-xxl);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pricing-card.featured {
+      border-color: rgba(0, 208, 158, 0.3);
+      background: rgba(0, 208, 158, 0.03);
+    }
+
+    .pricing-card.featured::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: var(--radius-xxl);
+      padding: 1px;
+      background: linear-gradient(180deg, rgba(0, 208, 158, 0.3), transparent 60%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .pricing-popular {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 5px 18px;
+      border-radius: var(--radius-pill);
+      background: var(--primary);
+      color: var(--bg);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .pricing-tier {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .pricing-card.featured .pricing-tier {
+      color: var(--primary);
+    }
+
+    .pricing-desc {
+      font-size: 0.875rem;
+      color: var(--text-tertiary);
+      margin-bottom: 28px;
+    }
+
+    .pricing-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 32px;
+      flex: 1;
+    }
+
+    .pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 9px 0;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .pricing-check {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .pricing-card .pricing-check {
+      background: var(--surface-elevated);
+    }
+
+    .pricing-card .pricing-check svg {
+      stroke: var(--text-tertiary);
+    }
+
+    .pricing-card.featured .pricing-check {
+      background: var(--primary-surface);
+    }
+
+    .pricing-card.featured .pricing-check svg {
+      stroke: var(--primary);
+    }
+
+    .pricing-btn {
+      display: block;
+      text-align: center;
+      padding: 14px;
+      border-radius: var(--radius-pill);
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .pricing-btn-outline {
+      background: transparent;
+      border: 1px solid var(--glass-border);
+      color: var(--text-primary);
+    }
+
+    .pricing-btn-outline:hover {
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    .pricing-btn-fill {
+      background: var(--primary);
+      color: var(--bg);
+    }
+
+    .pricing-btn-fill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0, 208, 158, 0.3);
+    }
+
+    .pricing-note {
+      text-align: center;
+      margin-top: 28px;
+      font-size: 0.85rem;
+      color: var(--text-tertiary);
+    }
+
+    @media (max-width: 640px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===================== FAQ ===================== */
+    .faq-list {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 24px 0;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .faq-question:hover {
+      color: var(--primary);
+    }
+
+    .faq-chevron {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      color: var(--text-tertiary);
+      transition: transform 0.3s;
+    }
+
+    .faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .faq-answer-inner {
+      padding: 0 0 24px;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* ===================== FINAL CTA ===================== */
+    .final-cta {
+      text-align: center;
+      padding: 100px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-cta-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 208, 158, 0.06) 0%, transparent 65%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .final-cta-content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .final-cta h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .final-cta p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 36px;
+      line-height: 1.65;
+    }
+
+    /* ===================== FOOTER ===================== */
+    footer {
+      border-top: 1px solid var(--glass-border);
+      padding: 48px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-logo {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--text-tertiary);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .footer-links a {
+      color: var(--text-tertiary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    @media (max-width: 600px) {
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    /* ===================== ANIMATIONS ===================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ===================== COUNTER ANIMATION ===================== */
+    .counter {
+      display: inline-block;
+    }
+
+    /* ===================== UTILITY ===================== */
+    .text-gradient {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
+
+    /* ===================== HAMBURGER MENU ===================== */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      padding: 10px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 101;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .nav-hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Progression scroll hint */
+    .progression-track {
+      position: relative;
+    }
+
+    .progression-track::after {
+      content: '';
+      position: sticky;
+      right: 0;
+      top: 0;
+      flex-shrink: 0;
+      width: 40px;
+      height: 100%;
+      background: linear-gradient(to right, transparent, var(--bg));
+      pointer-events: none;
+    }
+
+    /* ===================== MOBILE ===================== */
+    @media (max-width: 768px) {
+      .nav-hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 280px;
+        height: 100vh;
+        height: 100dvh;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 80px 32px 32px;
+        gap: 0;
+        background: rgba(10, 14, 20, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-left: 1px solid var(--glass-border);
+        transform: translateX(100%);
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 100;
+      }
+
+      .nav-links.open {
+        transform: translateX(0);
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 16px 0;
+        font-size: 1rem;
+        color: var(--text-secondary);
+        border-bottom: 1px solid var(--glass-border);
+        width: 100%;
+      }
+
+      .nav-links a.nav-cta {
+        margin-top: 24px;
+        text-align: center;
+        border-bottom: none;
+      }
+
+      .hero {
+        padding: 80px 24px 60px;
+        min-height: auto;
+      }
+
+      .section-wrap {
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+
+      .final-cta {
+        padding: 60px 24px;
+      }
+
+      .hero-proof {
+        flex-wrap: wrap;
+        gap: 16px 24px;
+        justify-content: center;
+      }
+
+      .proof-divider {
+        display: none;
+      }
+
+      .proof-item {
+        min-width: calc(50% - 16px);
+        text-align: center;
+        align-items: center;
+      }
+
+      .level-node {
+        min-width: 110px;
+      }
+
+      .pricing-card {
+        padding: 28px 20px;
+      }
+
+      .problem-stat {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .pricing-card.featured {
+        margin-top: 16px;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Money Mindset</h1>
-    <p class="tagline">Think Rich. Be Free.</p>
-    <p>Money Mindset teaches you the psychology behind every financial decision you make. Through interactive lessons, quizzes, simulations, and a gamified investment portfolio, you'll learn why your brain sabotages your finances -- and how to rewire it for wealth.</p>
-    <p>Available on the App Store.</p>
-    <div class="links">
-      <a href="/privacy">Privacy Policy</a>
-      <a href="/terms">Terms of Service</a>
+
+  <!-- ==================== NAV ==================== -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <a href="#" class="nav-brand">
+      <img src="icon.png" alt="Money Mindset" class="nav-logo">
+      <span class="nav-name">Money Mindset</span>
+    </a>
+    <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#how">How It Works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#download" class="nav-cta">Download Free</a>
     </div>
-    <div class="footer">
-      <p>Contact: support@money-mindsets.com</p>
-      <p>&copy; 2026 Money Mindset. All rights reserved.</p>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="hero" id="top">
+    <div class="hero-glow"></div>
+    <div class="hero-grid-overlay"></div>
+
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge reveal">
+          <span class="hero-badge-dot"></span>
+          Now available on iOS
+        </div>
+
+        <h1 class="reveal reveal-delay-1">
+          Your money brain<br>needs <span class="text-gradient">training</span>
+        </h1>
+
+        <p class="hero-sub reveal reveal-delay-2">
+          The app that teaches the psychology behind every dollar decision you make -- so you stop guessing and start building.
+        </p>
+
+        <div class="hero-actions reveal reveal-delay-3">
+          <a href="#download" class="btn-primary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            Download for iOS
+          </a>
+          <a href="#features" class="btn-secondary">
+            See how it works
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <div class="hero-proof reveal reveal-delay-4">
+          <div class="proof-item">
+            <span class="proof-number counter" data-target="7">7</span>
+            <span class="proof-label">Learning pillars</span>
+          </div>
+          <div class="proof-divider"></div>
+          <div class="proof-item">
+            <span class="proof-number"><span class="counter" data-target="400">400</span>+</span>
+            <span class="proof-label">Insight cards</span>
+          </div>
+          <div class="proof-divider"></div>
+          <div class="proof-item">
+            <span class="proof-number"><span class="counter" data-target="100">100</span></span>
+            <span class="proof-label">Levels to master</span>
+          </div>
+          <div class="proof-divider"></div>
+          <div class="proof-item">
+            <span class="proof-number"><span class="counter" data-target="5">5</span> min</span>
+            <span class="proof-label">Per session</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-phone reveal reveal-delay-2">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="phone-greeting">Good evening</div>
+            <div class="phone-user-name">Level 12 -- Team Lead</div>
+
+            <div class="phone-stats">
+              <div class="phone-stat">
+                <div class="phone-stat-value">2,450</div>
+                <div class="phone-stat-label">TOTAL XP</div>
+              </div>
+              <div class="phone-stat">
+                <div class="phone-stat-value">14</div>
+                <div class="phone-stat-label">DAY STREAK</div>
+              </div>
+            </div>
+
+            <div class="phone-card">
+              <div class="phone-card-header">
+                <div class="phone-card-icon">
+                  <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                </div>
+                <div>
+                  <div class="phone-card-title">The Spending Trap</div>
+                  <div class="phone-card-sub">Lesson 3 of 8</div>
+                </div>
+              </div>
+              <div class="phone-progress-bar">
+                <div class="phone-progress-fill"></div>
+              </div>
+              <div class="phone-xp-bar">
+                <span class="phone-xp-text">+30 XP</span>
+                <span class="phone-xp-text">65%</span>
+              </div>
+            </div>
+
+            <div class="phone-card" style="padding: 12px 16px;">
+              <div class="phone-card-title" style="font-size: 0.7rem; margin-bottom: 8px;">This week</div>
+              <div class="phone-streak-row">
+                <div class="phone-streak-day active">M</div>
+                <div class="phone-streak-day active">T</div>
+                <div class="phone-streak-day active">W</div>
+                <div class="phone-streak-day active">T</div>
+                <div class="phone-streak-day current">F</div>
+                <div class="phone-streak-day">S</div>
+                <div class="phone-streak-day">S</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <!-- ==================== PROBLEM ==================== -->
+  <section class="problem" id="problem">
+    <div class="section-wrap">
+      <div class="problem-grid">
+        <div class="problem-stats">
+          <div class="problem-stat reveal">
+            <div class="problem-stat-number">78%</div>
+            <div class="problem-stat-text">of young adults say they were never taught how money actually works</div>
+          </div>
+          <div class="problem-stat reveal reveal-delay-1">
+            <div class="problem-stat-number">$5,400</div>
+            <div class="problem-stat-text">average annual cost of poor financial decisions for 18-34 year olds</div>
+          </div>
+          <div class="problem-stat reveal reveal-delay-2">
+            <div class="problem-stat-number">63%</div>
+            <div class="problem-stat-text">of people who start a finance course drop out before finishing module two</div>
+          </div>
+        </div>
+
+        <div class="problem-text reveal">
+          <h2>The problem isn't laziness. It's the way you were taught.</h2>
+          <p>
+            Nobody sat you down and explained why your brain panics during a market dip, or why you impulse-buy things you don't need, or why saving feels like punishment.
+          </p>
+          <p>
+            Traditional finance education throws spreadsheets at a psychology problem. <span class="accent">Money Mindset fixes the thinking first.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FEATURES ==================== -->
+  <section class="section-wrap" id="features">
+    <div class="section-header reveal">
+      <div class="section-label">Features</div>
+      <h2 class="section-title">Six tools. One sharper mind.</h2>
+      <p class="section-subtitle">Not textbook finance. Real behavioral psychology -- built for how your brain actually processes money.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h3>Learn</h3>
+        <p>7 pillars of financial psychology in bite-sized lessons. From your money brain to debt psychology -- 5 minutes at a time.</p>
+        <span class="feature-tag">7 pillars -- 3 difficulty levels</span>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon-wrap">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+        </div>
+        <h3>Simulate</h3>
+        <p>Face real financial crossroads with zero risk. See where each decision leads before your wallet finds out.</p>
+        <span class="feature-tag">Interactive scenarios</span>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon-wrap">
+          <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        </div>
+        <h3>Invest</h3>
+        <p>Build a simulated portfolio across 7 asset classes -- from savings accounts to crypto. Learn by doing, not watching.</p>
+        <span class="feature-tag">35 assets -- real market mechanics</span>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h3>Compete</h3>
+        <p>Daily quizzes, revision challenges, and budget battles. Test what you actually retained -- not what you think you know.</p>
+        <span class="feature-tag">Daily challenges + leaderboard</span>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon-wrap">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Feed</h3>
+        <p>400+ psychology cards about why you spend, save, and stress the way you do. Scroll through insights that actually stick.</p>
+        <span class="feature-tag">Behavioral insights daily</span>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon-wrap">
+          <svg viewBox="0 0 24 24"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+        </div>
+        <h3>Level Up</h3>
+        <p>100 career-progression levels. XP. Achievements. MindCoins. Weekly payday. Your financial education, gamified.</p>
+        <span class="feature-tag">100+ achievements to unlock</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== HOW IT WORKS ==================== -->
+  <section class="how-it-works" id="how">
+    <div class="section-wrap">
+      <div class="section-header section-header-center reveal">
+        <div class="section-label">How it works</div>
+        <h2 class="section-title">From download to money-smart in four steps</h2>
+        <p class="section-subtitle">No account setup maze. No credit card. Open the app and start learning in under 60 seconds.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-number">1</div>
+          <h3>Pick your goal</h3>
+          <p>Tell us what you want to get better at -- spending, saving, investing, or all of it.</p>
+        </div>
+        <div class="step reveal reveal-delay-1">
+          <div class="step-number">2</div>
+          <h3>Learn in 5 minutes</h3>
+          <p>Bite-sized lessons built around psychology, not spreadsheets. One concept at a time.</p>
+        </div>
+        <div class="step reveal reveal-delay-2">
+          <div class="step-number">3</div>
+          <h3>Practice for real</h3>
+          <p>Simulations, quizzes, and a virtual portfolio let you test decisions risk-free.</p>
+        </div>
+        <div class="step reveal reveal-delay-3">
+          <div class="step-number">4</div>
+          <h3>Build the streak</h3>
+          <p>Daily streaks, XP, and 100 levels keep you coming back. The habit builds the wealth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PROGRESSION ==================== -->
+  <section class="section-wrap">
+    <div class="section-header section-header-center reveal">
+      <div class="section-label">Progression</div>
+      <h2 class="section-title">100 levels. From intern to legend.</h2>
+      <p class="section-subtitle">Every lesson, quiz, and simulation earns XP. Watch your career title evolve as your money brain levels up.</p>
+    </div>
+
+    <div class="progression-track reveal">
+      <div class="level-node">
+        <div class="level-circle level-tier-1">1</div>
+        <div class="level-name">Unpaid Intern</div>
+        <div class="level-subtitle">Curious tier</div>
+      </div>
+      <div class="level-node">
+        <div class="level-circle level-tier-1">5</div>
+        <div class="level-name">Cubicle Survivor</div>
+        <div class="level-subtitle">Curious tier</div>
+      </div>
+      <div class="level-node">
+        <div class="level-circle level-tier-2">10</div>
+        <div class="level-name">Office Kingpin</div>
+        <div class="level-subtitle">Aware tier</div>
+      </div>
+      <div class="level-node">
+        <div class="level-circle level-tier-2">20</div>
+        <div class="level-name">Golden Parachute</div>
+        <div class="level-subtitle">Strategist tier</div>
+      </div>
+      <div class="level-node">
+        <div class="level-circle level-tier-3">35</div>
+        <div class="level-name">Mr Money Bags</div>
+        <div class="level-subtitle">Legend tier</div>
+      </div>
+      <div class="level-node">
+        <div class="level-circle level-tier-3">50</div>
+        <div class="level-name">Half Century Boss</div>
+        <div class="level-subtitle">Oracle tier</div>
+      </div>
+      <div class="level-node">
+        <div class="level-circle level-tier-4">75</div>
+        <div class="level-name">Diamond Mind</div>
+        <div class="level-subtitle">Visionary tier</div>
+      </div>
+      <div class="level-node">
+        <div class="level-circle level-tier-4">100</div>
+        <div class="level-name">Century Master</div>
+        <div class="level-subtitle">Visionary tier</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SOCIAL PROOF ==================== -->
+  <section class="section-wrap" id="proof">
+    <div class="section-header section-header-center reveal">
+      <div class="section-label">What people say</div>
+      <h2 class="section-title">Built for people who hate finance apps</h2>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial reveal">
+        <p class="testimonial-text">"I've tried every budgeting app out there. This is the first one that made me understand WHY I overspend, not just tell me to stop."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">JR</div>
+          <div>
+            <div class="testimonial-name">Jake R.</div>
+            <div class="testimonial-detail">Level 18 -- Regional Manager</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial reveal reveal-delay-1">
+        <p class="testimonial-text">"The simulations are addictive. I ran a scenario where I bought a car on finance vs. saving for it. Seeing the numbers play out changed how I think about debt."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">SM</div>
+          <div>
+            <div class="testimonial-name">Sarah M.</div>
+            <div class="testimonial-detail">Level 24 -- Market Disruptor</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial reveal reveal-delay-2">
+        <p class="testimonial-text">"Five minutes on the train every morning. 47-day streak. I genuinely understand investing now, and I'm 22. That's wild."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">DN</div>
+          <div>
+            <div class="testimonial-name">Daniel N.</div>
+            <div class="testimonial-detail">Level 15 -- Corner Office</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PRICING ==================== -->
+  <section class="section-wrap" id="pricing">
+    <div class="section-header section-header-center reveal">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Start free. Upgrade when you're hooked.</h2>
+      <p class="section-subtitle">The free tier isn't a demo -- it's genuinely useful. Premium removes every limit.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="pricing-card reveal">
+        <div class="pricing-tier">Free</div>
+        <div class="pricing-desc">Everything you need to start</div>
+        <ul class="pricing-features">
+          <li>
+            <span class="pricing-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            1 lesson per day
+          </li>
+          <li>
+            <span class="pricing-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            1 simulation per day
+          </li>
+          <li>
+            <span class="pricing-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            1 revision quiz per day
+          </li>
+          <li>
+            <span class="pricing-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            10 feed cards per day
+          </li>
+          <li>
+            <span class="pricing-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Savings account investing
+          </li>
+          <li>
+            <span class="pricing-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Full gamification + streaks
+          </li>
+        </ul>
+        <a href="#download" class="pricing-btn pricing-btn-outline">Get Started Free</a>
+      </div>
+
+      <div class="pricing-card featured reveal reveal-delay-1">
+        <div class="pricing-popular">Most Popular</div>
+        <div class="pricing-tier">Premium</div>
+        <div class="pricing-desc">Everything. No limits. No ads.</div>
+        <ul class="pricing-features">
+          <li>
+            <span class="pricing-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Unlimited lessons + simulations
+          </li>
+          <li>
+            <span class="pricing-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Unlimited revisions + daily challenges
+          </li>
+          <li>
+            <span class="pricing-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Unlimited feed cards
+          </li>
+          <li>
+            <span class="pricing-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Full market -- all 7 asset classes
+          </li>
+          <li>
+            <span class="pricing-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            1.5x XP multiplier + 20% paycheck bonus
+          </li>
+          <li>
+            <span class="pricing-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Full leaderboard access
+          </li>
+        </ul>
+        <a href="#download" class="pricing-btn pricing-btn-fill">Start Free Trial</a>
+      </div>
+    </div>
+
+    <p class="pricing-note reveal">Pricing available in the app. Cancel anytime. No credit card required to start.</p>
+  </section>
+
+  <!-- ==================== FAQ ==================== -->
+  <section class="section-wrap" id="faq" style="border-top: 1px solid var(--glass-border);">
+    <div class="section-header section-header-center reveal">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Questions before you download</h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          Is this actually free?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Yes. The free tier gives you one lesson, one simulation, one quiz, and 10 feed cards every day -- plus full access to the gamification system, streaks, and achievements. No credit card at signup. Premium unlocks unlimited access and extra features, but the free tier is a genuine product, not a teaser.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          How is this different from a budgeting app?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Budgeting apps track where your money goes. Money Mindset changes how you think about it. We teach financial psychology -- why your brain makes bad money decisions, what mental shortcuts cost you, and how to rewire your relationship with spending, saving, and investing. It's 80% psychology, 20% knowledge.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          I already know the basics. Is this too beginner for me?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Each pillar has three difficulty levels -- beginner, intermediate, and advanced. The advanced content covers behavioral economics, money scripts, and wealth psychology that most people never encounter. Even if you know your compound interest from your capital gains, the psychology layer will surprise you.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          How long does each session take?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">About 5 minutes. Lessons are designed for the commute, the queue, or the bathroom break. Short enough to build a daily habit, deep enough to actually change how you think.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          Does this app give financial advice?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">No. Money Mindset is an education app, not a financial advisory service. We teach you how to think about money, not what to do with yours. The investment simulator uses virtual currency (MindCoins) -- no real money is ever at risk. For personal financial advice, consult a licensed professional.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          When is the Android version coming?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Android is on the roadmap. We launched iOS first to focus on delivering one great experience. Download the iOS version now and your progress will carry over when Android launches.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FINAL CTA ==================== -->
+  <section class="final-cta" id="download">
+    <div class="final-cta-glow"></div>
+    <div class="final-cta-content reveal">
+      <h2>Your money brain<br>is <span class="text-gradient">waiting</span></h2>
+      <p>5 minutes a day. 100 levels to master. Zero risk.<br>Start training the most expensive organ you own.</p>
+      <a href="#" class="btn-primary" style="font-size: 1.05rem; padding: 18px 40px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Download Free on iOS
+      </a>
+      <p style="margin-top: 16px; margin-bottom: 0; font-size: 0.85rem; color: var(--text-tertiary);">No credit card required</p>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <img src="icon.png" alt="Money Mindset" class="footer-logo">
+        <span class="footer-copy">2026 Money Mindset. All rights reserved.</span>
+      </div>
+      <div class="footer-links">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="mailto:support@money-mindsets.com">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== JS ==================== -->
+  <script>
+    (function() {
+      'use strict';
+
+      // Sticky nav scroll effect
+      var nav = document.querySelector('.nav');
+      var scrolled = false;
+      window.addEventListener('scroll', function() {
+        var shouldBeScrolled = window.scrollY > 20;
+        if (shouldBeScrolled !== scrolled) {
+          scrolled = shouldBeScrolled;
+          nav.classList.toggle('scrolled', scrolled);
+        }
+      }, { passive: true });
+
+      // Mobile menu toggle
+      var hamburger = document.querySelector('.nav-hamburger');
+      var navLinks = document.querySelector('.nav-links');
+      if (hamburger) {
+        hamburger.addEventListener('click', function() {
+          var isOpen = hamburger.classList.toggle('open');
+          navLinks.classList.toggle('open');
+          hamburger.setAttribute('aria-expanded', isOpen);
+          document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+        navLinks.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            hamburger.classList.remove('open');
+            navLinks.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+
+      // Scroll reveal
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else {
+        reveals.forEach(function(el) { el.classList.add('visible'); });
+      }
+
+      // FAQ accordion
+      document.querySelectorAll('.faq-question').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var item = btn.parentElement;
+          var answer = item.querySelector('.faq-answer');
+          var isOpen = item.classList.contains('open');
+
+          // Close all
+          document.querySelectorAll('.faq-item.open').forEach(function(openItem) {
+            openItem.classList.remove('open');
+            openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+            openItem.querySelector('.faq-answer').style.maxHeight = null;
+          });
+
+          // Open this one (if it wasn't already open)
+          if (!isOpen) {
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+          }
+        });
+      });
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+        a.addEventListener('click', function(e) {
+          var target = document.querySelector(a.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      // Counter animation
+      var counters = document.querySelectorAll('.counter');
+      var counterObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var el = entry.target;
+            var target = parseInt(el.getAttribute('data-target'), 10);
+            if (!target) return;
+            var duration = 1200;
+            var start = performance.now();
+            function tick(now) {
+              var progress = Math.min((now - start) / duration, 1);
+              var eased = 1 - Math.pow(1 - progress, 3);
+              el.textContent = Math.round(target * eased);
+              if (progress < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+            counterObserver.unobserve(el);
+          }
+        });
+      }, { threshold: 0.5 });
+      counters.forEach(function(c) { counterObserver.observe(c); });
+
+    })();
+  </script>
+
 </body>
 </html>
