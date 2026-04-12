@@ -608,28 +608,26 @@
     }
 
     .problem-stat {
-      padding: 28px;
-      border-radius: var(--radius-xl);
+      padding: 16px 20px;
+      border-radius: var(--radius-lg);
       background: var(--surface-light);
-      border: 1px solid var(--glass-border);
-      transition: border-color 0.3s;
-    }
-
-    .problem-stat:hover {
-      border-color: rgba(255, 107, 107, 0.2);
+      border: 1px solid rgba(255, 107, 107, 0.15);
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
     }
 
     .problem-stat-number {
-      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-size: 0.85rem;
       font-weight: 800;
       color: var(--error);
-      letter-spacing: -0.5px;
-      margin-bottom: 4px;
-      line-height: 1.2;
+      letter-spacing: -0.2px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .problem-stat-text {
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       color: var(--text-secondary);
       line-height: 1.5;
     }
@@ -1682,16 +1680,16 @@
       <div class="problem-grid">
         <div class="problem-stats">
           <div class="problem-stat reveal">
-            <div class="problem-stat-number">Nobody taught you</div>
-            <div class="problem-stat-text">Most young adults say they were never shown how money actually works</div>
+            <div class="problem-stat-number">No education</div>
+            <div class="problem-stat-text">School taught you algebra, not why your brain treats a credit card like free money</div>
           </div>
           <div class="problem-stat reveal reveal-delay-1">
-            <div class="problem-stat-number">It adds up fast</div>
-            <div class="problem-stat-text">Bad money habits in your 20s quietly cost thousands every single year</div>
+            <div class="problem-stat-number">Wrong instincts</div>
+            <div class="problem-stat-text">Your gut sells low, buys high, and calls impulse spending "treating yourself"</div>
           </div>
           <div class="problem-stat reveal reveal-delay-2">
-            <div class="problem-stat-number">Courses don't work</div>
-            <div class="problem-stat-text">Most people who start a finance course quit before finishing the second module</div>
+            <div class="problem-stat-number">Boring fixes</div>
+            <div class="problem-stat-text">Spreadsheets and budgeting apps don't rewire the habits that got you here</div>
           </div>
         </div>
 
