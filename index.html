@@ -667,7 +667,7 @@
     }
 
     .feature-card {
-      padding: 32px 28px;
+      padding: 24px 20px;
       border-radius: var(--radius-xl);
       background: var(--glass-bg);
       border: 1px solid rgba(0, 208, 158, 0.3);
@@ -698,19 +698,19 @@
     }
 
     .feature-icon-wrap {
-      width: 48px;
-      height: 48px;
-      border-radius: var(--radius-md);
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
       background: rgba(0, 208, 158, 0.08);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
     }
 
     .feature-icon-wrap svg {
-      width: 22px;
-      height: 22px;
+      width: 18px;
+      height: 18px;
       color: var(--primary);
       stroke: currentColor;
       fill: none;
@@ -720,25 +720,25 @@
     }
 
     .feature-card h3 {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .feature-card p {
-      font-size: 0.92rem;
+      font-size: 0.82rem;
       color: var(--text-secondary);
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     .feature-card .feature-tag {
       display: inline-block;
-      margin-top: 16px;
-      padding: 4px 12px;
+      margin-top: 12px;
+      padding: 3px 10px;
       border-radius: var(--radius-pill);
       background: var(--primary-surface);
       color: var(--primary);
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: 600;
       letter-spacing: 0.3px;
     }
@@ -748,7 +748,13 @@
     }
 
     @media (max-width: 600px) {
-      .features-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .feature-card { padding: 16px 14px; }
+      .feature-icon-wrap { width: 36px; height: 36px; margin-bottom: 10px; }
+      .feature-icon-wrap svg { width: 16px; height: 16px; }
+      .feature-card h3 { font-size: 0.9rem; margin-bottom: 4px; }
+      .feature-card p { font-size: 0.75rem; line-height: 1.45; }
+      .feature-card .feature-tag { font-size: 0.6rem; margin-top: 8px; padding: 2px 8px; }
     }
 
     /* ===================== HOW IT WORKS ===================== */
@@ -1720,8 +1726,8 @@
           <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
         </div>
         <h3>Learn</h3>
-        <p>7 pillars of financial psychology in bite-sized lessons. From your money brain to debt psychology -- 5 minutes at a time.</p>
-        <span class="feature-tag">7 pillars -- 3 difficulty levels</span>
+        <p>7 pillars of money psychology. Bite-sized, 5 minutes at a time.</p>
+        <span class="feature-tag">3 difficulty levels</span>
       </div>
 
       <div class="feature-card reveal reveal-delay-1">
@@ -1729,7 +1735,7 @@
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
         </div>
         <h3>Simulate</h3>
-        <p>Face real financial crossroads with zero risk. See where each decision leads before your wallet finds out.</p>
+        <p>Real financial crossroads, zero risk. See where each decision leads.</p>
         <span class="feature-tag">Interactive scenarios</span>
       </div>
 
@@ -1738,8 +1744,8 @@
           <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
         </div>
         <h3>Invest</h3>
-        <p>Build a simulated portfolio across 7 asset classes -- from savings accounts to crypto. Learn by doing, not watching.</p>
-        <span class="feature-tag">35 assets -- real market mechanics</span>
+        <p>Build a virtual portfolio across 7 asset classes. Learn by doing.</p>
+        <span class="feature-tag">35 assets</span>
       </div>
 
       <div class="feature-card reveal">
@@ -1747,8 +1753,8 @@
           <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
         </div>
         <h3>Compete</h3>
-        <p>Daily quizzes, revision challenges, and budget battles. Test what you actually retained -- not what you think you know.</p>
-        <span class="feature-tag">Daily challenges + leaderboard</span>
+        <p>Daily quizzes and revision battles. Test what you actually retained.</p>
+        <span class="feature-tag">Leaderboard</span>
       </div>
 
       <div class="feature-card reveal reveal-delay-1">
@@ -1756,8 +1762,8 @@
           <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
         </div>
         <h3>Feed</h3>
-        <p>400+ psychology cards about why you spend, save, and stress the way you do. Scroll through insights that actually stick.</p>
-        <span class="feature-tag">Behavioral insights daily</span>
+        <p>400+ psychology cards. Scroll through insights that actually stick.</p>
+        <span class="feature-tag">Daily insights</span>
       </div>
 
       <div class="feature-card reveal reveal-delay-2">
@@ -1765,8 +1771,8 @@
           <svg viewBox="0 0 24 24"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
         </div>
         <h3>Level Up</h3>
-        <p>100 career-progression levels. XP. Achievements. MindCoins. Weekly payday. Your financial education, gamified.</p>
-        <span class="feature-tag">100+ achievements to unlock</span>
+        <p>100 levels. XP. Achievements. MindCoins. Your education, gamified.</p>
+        <span class="feature-tag">100+ achievements</span>
       </div>
     </div>
   </section>
