@@ -827,69 +827,60 @@
       .steps { grid-template-columns: 1fr; }
     }
 
-    /* ===================== LEVEL PROGRESSION ===================== */
-    .progression-track {
-      display: flex;
-      align-items: stretch;
-      gap: 0;
-      overflow-x: auto;
-      padding: 12px 0 20px;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
+    /* ===================== PROGRESSION SUMMARY ===================== */
+    .progression-summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
 
-    .progression-track::-webkit-scrollbar { display: none; }
-
-    .level-node {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-width: 140px;
-      position: relative;
-      padding: 0 8px;
+    .prog-card {
+      text-align: center;
+      padding: 28px 16px;
+      border-radius: var(--radius-xl);
+      background: var(--glass-bg);
+      border: 1.5px solid var(--primary);
     }
 
-    .level-node:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      top: 24px;
-      left: calc(50% + 24px);
-      width: calc(100% - 48px);
-      height: 2px;
-      background: linear-gradient(90deg, var(--primary), rgba(0, 208, 158, 0.2));
+    .prog-icon {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 16px;
+      color: var(--primary);
     }
 
-    .level-circle {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .prog-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .prog-stat {
+      font-size: 2rem;
       font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -1px;
+      margin-bottom: 4px;
+    }
+
+    .prog-label {
       font-size: 0.85rem;
-      margin-bottom: 12px;
-      position: relative;
-      z-index: 1;
-      border: 2px solid;
-    }
-
-    .level-tier-1 { background: var(--surface-light); border-color: var(--text-tertiary); color: var(--text-tertiary); }
-    .level-tier-2 { background: rgba(0, 208, 158, 0.08); border-color: rgba(0, 208, 158, 0.3); color: var(--primary); }
-    .level-tier-3 { background: rgba(0, 208, 158, 0.12); border-color: rgba(0, 208, 158, 0.5); color: var(--primary); }
-    .level-tier-4 { background: rgba(0, 208, 158, 0.18); border-color: var(--primary); color: var(--primary); box-shadow: 0 0 20px var(--glow); }
-
-    .level-name {
-      font-size: 0.8rem;
       font-weight: 700;
-      margin-bottom: 2px;
-      text-align: center;
+      margin-bottom: 8px;
     }
 
-    .level-subtitle {
-      font-size: 0.65rem;
+    .prog-desc {
+      font-size: 0.78rem;
       color: var(--text-tertiary);
-      text-align: center;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 600px) {
+      .progression-summary { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      .prog-card { padding: 20px 12px; }
+      .prog-stat { font-size: 1.5rem; }
+      .prog-label { font-size: 0.75rem; }
+      .prog-desc { font-size: 0.7rem; }
+      .prog-icon { width: 32px; height: 32px; margin-bottom: 12px; }
     }
 
     /* ===================== SOCIAL PROOF ===================== */
@@ -1363,23 +1354,6 @@
       transform: translateY(-7px) rotate(-45deg);
     }
 
-    /* Progression scroll hint */
-    .progression-track {
-      position: relative;
-    }
-
-    .progression-track::after {
-      content: '';
-      position: sticky;
-      right: 0;
-      top: 0;
-      flex-shrink: 0;
-      width: 40px;
-      height: 100%;
-      background: linear-gradient(to right, transparent, var(--bg));
-      pointer-events: none;
-    }
-
     /* ===================== MOBILE ===================== */
     @media (max-width: 768px) {
       .nav-hamburger {
@@ -1474,10 +1448,6 @@
         min-width: calc(50% - 16px);
         text-align: center;
         align-items: center;
-      }
-
-      .level-node {
-        min-width: 110px;
       }
 
       .pricing-card {
@@ -1820,46 +1790,30 @@
       <p class="section-subtitle">Every lesson, simulation, and revision quiz earns XP -- leading to promotions with perks that mirror the real corporate ladder.</p>
     </div>
 
-    <div class="progression-track reveal">
-      <div class="level-node">
-        <div class="level-circle level-tier-1">1</div>
-        <div class="level-name">Unpaid Intern</div>
-        <div class="level-subtitle">Curious tier</div>
+    <div class="progression-summary reveal">
+      <div class="prog-card">
+        <div class="prog-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
+        </div>
+        <div class="prog-stat">100</div>
+        <div class="prog-label">Career titles</div>
+        <div class="prog-desc">From Unpaid Intern to Century Master</div>
       </div>
-      <div class="level-node">
-        <div class="level-circle level-tier-1">5</div>
-        <div class="level-name">Cubicle Survivor</div>
-        <div class="level-subtitle">Curious tier</div>
+      <div class="prog-card">
+        <div class="prog-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C7 4 9 7 12 7s5-3 7.5-3a2.5 2.5 0 0 1 0 5H18"/><path d="M12 7v13"/><path d="M8 14h8"/></svg>
+        </div>
+        <div class="prog-stat">10</div>
+        <div class="prog-label">Tier ranks</div>
+        <div class="prog-desc">Curious, Aware, Strategist, Visionary and more</div>
       </div>
-      <div class="level-node">
-        <div class="level-circle level-tier-2">10</div>
-        <div class="level-name">Office Kingpin</div>
-        <div class="level-subtitle">Aware tier</div>
-      </div>
-      <div class="level-node">
-        <div class="level-circle level-tier-2">20</div>
-        <div class="level-name">Golden Parachute</div>
-        <div class="level-subtitle">Strategist tier</div>
-      </div>
-      <div class="level-node">
-        <div class="level-circle level-tier-3">35</div>
-        <div class="level-name">Mr Money Bags</div>
-        <div class="level-subtitle">Legend tier</div>
-      </div>
-      <div class="level-node">
-        <div class="level-circle level-tier-3">50</div>
-        <div class="level-name">Wealth Incarnate</div>
-        <div class="level-subtitle">Visionary tier</div>
-      </div>
-      <div class="level-node">
-        <div class="level-circle level-tier-4">75</div>
-        <div class="level-name">Diamond Mind</div>
-        <div class="level-subtitle">Visionary tier</div>
-      </div>
-      <div class="level-node">
-        <div class="level-circle level-tier-4">100</div>
-        <div class="level-name">Century Master</div>
-        <div class="level-subtitle">Visionary tier</div>
+      <div class="prog-card">
+        <div class="prog-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+        </div>
+        <div class="prog-stat">120+</div>
+        <div class="prog-label">Achievements</div>
+        <div class="prog-desc">Unlock badges for milestones, streaks, and mastery</div>
       </div>
     </div>
   </section>
