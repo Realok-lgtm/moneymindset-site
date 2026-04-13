@@ -608,28 +608,26 @@
     }
 
     .problem-stat {
-      padding: 16px 20px;
+      padding: 20px 24px;
       border-radius: var(--radius-lg);
       background: var(--surface-light);
       border: 1px solid rgba(0, 208, 158, 0.2);
       display: flex;
-      align-items: baseline;
-      gap: 12px;
+      flex-direction: column;
+      gap: 6px;
     }
 
     .problem-stat-number {
-      font-size: 0.85rem;
+      font-size: 1rem;
       font-weight: 800;
       color: var(--primary);
       letter-spacing: -0.2px;
-      white-space: nowrap;
-      flex-shrink: 0;
     }
 
     .problem-stat-text {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      line-height: 1.55;
     }
 
     .problem-text h2 {
@@ -688,14 +686,16 @@
       transition: background 0.3s;
     }
 
-    .feature-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(0, 208, 158, 0.2);
-      background: rgba(0, 208, 158, 0.02);
-    }
+    @media (hover: hover) {
+      .feature-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(0, 208, 158, 0.2);
+        background: rgba(0, 208, 158, 0.02);
+      }
 
-    .feature-card:hover::before {
-      background: linear-gradient(90deg, transparent, rgba(0, 208, 158, 0.4), transparent);
+      .feature-card:hover::before {
+        background: linear-gradient(90deg, transparent, rgba(0, 208, 158, 0.4), transparent);
+      }
     }
 
     .feature-icon-wrap {
@@ -842,67 +842,57 @@
       border-bottom: 1px solid var(--glass-border);
     }
 
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 32px;
-      position: relative;
-    }
-
-    .steps::before {
-      content: '';
-      position: absolute;
-      top: 28px;
-      left: 10%;
-      right: 10%;
-      height: 2px;
-      background: linear-gradient(90deg, var(--primary-surface), rgba(0, 208, 158, 0.15), var(--primary-surface));
-    }
-
-    .step {
-      text-align: center;
-      position: relative;
-    }
-
-    .step-number {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: var(--surface-light);
-      border: 2px solid rgba(0, 208, 158, 0.2);
+    .screenshot-carousel {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: var(--primary);
-      position: relative;
-      z-index: 1;
+      gap: 24px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 8px 0 24px;
+      scrollbar-width: none;
     }
 
-    .step h3 {
-      font-size: 1rem;
+    .screenshot-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .screenshot-card {
+      flex: 0 0 220px;
+      scroll-snap-align: center;
+      text-align: center;
+    }
+
+    .screenshot-card img {
+      width: 100%;
+      border-radius: 20px;
+      border: 1px solid rgba(0, 208, 158, 0.15);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .screenshot-card img:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 208, 158, 0.12);
+    }
+
+    .screenshot-card .screenshot-label {
+      margin-top: 14px;
+      font-size: 0.95rem;
       font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .step p {
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-      line-height: 1.55;
+      color: var(--text-primary);
+      letter-spacing: 0.02em;
     }
 
     @media (max-width: 768px) {
-      .steps {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 40px 24px;
+      .screenshot-card {
+        flex: 0 0 180px;
       }
-      .steps::before { display: none; }
     }
 
     @media (max-width: 480px) {
-      .steps { grid-template-columns: 1fr; }
+      .screenshot-card {
+        flex: 0 0 160px;
+      }
     }
 
     /* ===================== PROGRESSION SUMMARY ===================== */
@@ -1683,7 +1673,7 @@
       <a href="#how">How It Works</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
-      <a href="#download" class="nav-cta">Join Waitlist</a>
+      <a href="#download" class="nav-cta">Stay Updated</a>
     </div>
   </nav>
 
@@ -1696,7 +1686,7 @@
       <div class="hero-text">
         <div class="hero-badge reveal">
           <span class="hero-badge-dot"></span>
-          Coming soon on iOS
+          Free on iOS
         </div>
 
         <h1 class="reveal reveal-delay-1">
@@ -1710,7 +1700,7 @@
         <div class="hero-actions reveal reveal-delay-3">
           <a href="#download" class="btn-primary">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            Get Notified at Launch
+            Stay in the Loop
           </a>
           <a href="#features" class="btn-secondary">
             See how it works
@@ -1913,26 +1903,30 @@
         <p class="section-subtitle">Most finance apps give you a spreadsheet. Money Mindset gives you a psychology upgrade.</p>
       </div>
 
-      <div class="steps">
-        <div class="step reveal">
-          <div class="step-number">1</div>
-          <h3>Understand your triggers</h3>
-          <p>AI-generated lessons reveal the mental shortcuts that cost you money -- impulse spending, loss aversion, lifestyle creep.</p>
+      <div class="screenshot-carousel reveal">
+        <div class="screenshot-card">
+          <img src="screenshots/learn.png" alt="Learn tab showing money psychology lessons">
+          <div class="screenshot-label">Learn</div>
         </div>
-        <div class="step reveal reveal-delay-1">
-          <div class="step-number">2</div>
-          <h3>Practise without the price tag</h3>
-          <p>Simulations put you in real financial crossroads. Make the call, see the outcome -- no real money at risk.</p>
+        <div class="screenshot-card">
+          <img src="screenshots/simulate.png" alt="Simulate tab with financial decision scenarios">
+          <div class="screenshot-label">Simulate</div>
         </div>
-        <div class="step reveal reveal-delay-2">
-          <div class="step-number">3</div>
-          <h3>Earn, spend, invest MindCoins</h3>
-          <p>A virtual economy that mirrors the real one. Earn a paycheck, pay tax, build a portfolio -- and learn the mechanics by living them.</p>
+        <div class="screenshot-card">
+          <img src="screenshots/feed.png" alt="Feed tab with daily money insights">
+          <div class="screenshot-label">Feed</div>
         </div>
-        <div class="step reveal reveal-delay-3">
-          <div class="step-number">4</div>
-          <h3>Watch your mindset compound</h3>
-          <p>100 levels, daily streaks, and revision quizzes turn one lesson into a lasting shift in how you think about every dollar.</p>
+        <div class="screenshot-card">
+          <img src="screenshots/revision.png" alt="Revision tab with quick-fire quizzes">
+          <div class="screenshot-label">Revision</div>
+        </div>
+        <div class="screenshot-card">
+          <img src="screenshots/invest.png" alt="Invest tab with virtual stock market">
+          <div class="screenshot-label">Invest</div>
+        </div>
+        <div class="screenshot-card">
+          <img src="screenshots/leaderboard.png" alt="Leaderboard showing competitive rankings">
+          <div class="screenshot-label">Leaderboard</div>
         </div>
       </div>
     </div>
@@ -2014,7 +2008,7 @@
             Full gamification + streaks
           </li>
         </ul>
-        <a href="#download" class="pricing-btn pricing-btn-outline">Join Waitlist</a>
+        <a href="#download" class="pricing-btn pricing-btn-outline">Stay Updated</a>
       </div>
 
       <div class="pricing-card featured reveal reveal-delay-1">
@@ -2047,7 +2041,7 @@
             Full leaderboard access
           </li>
         </ul>
-        <a href="#download" class="pricing-btn pricing-btn-fill">Join Waitlist</a>
+        <a href="#download" class="pricing-btn pricing-btn-fill">Stay Updated</a>
       </div>
     </div>
 
@@ -2124,17 +2118,17 @@
     </div>
   </section>
 
-  <!-- ==================== WAITLIST CTA ==================== -->
+  <!-- ==================== SIGNUP CTA ==================== -->
   <section class="final-cta" id="download">
     <div class="final-cta-glow"></div>
     <div class="final-cta-content reveal">
       <h2>Your money brain<br>is <span class="text-gradient">waiting</span></h2>
-      <p>Be first to know when Money Mindset drops on iOS.<br>One email. No spam. Just launch day.</p>
+      <p>Get updates, tips, and exclusive promos straight to your inbox.</p>
       <form id="waitlist-form" class="waitlist-form" autocomplete="on">
         <input type="text" name="website" id="waitlist-hp" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="waitlist-input-row">
           <input type="email" id="waitlist-email" placeholder="Enter your email" required autocomplete="email">
-          <button type="submit" class="btn-primary waitlist-btn">Notify Me</button>
+          <button type="submit" class="btn-primary waitlist-btn">Sign Me Up</button>
         </div>
         <p id="waitlist-msg" class="waitlist-msg"></p>
       </form>
@@ -2142,7 +2136,7 @@
     </div>
   </section>
 
-  <div class="download-toast" id="downloadToast">Coming to the App Store very soon</div>
+  <div class="download-toast" id="downloadToast" style="display:none"></div>
 
   <!-- ==================== FOOTER ==================== -->
   <footer>
@@ -2286,19 +2280,19 @@
       // Feature card modals
       var featureDetails = {
         'Learn': {
-          desc: 'AI generates fresh lessons every time across 7 pillars of money psychology -- behavioral economics, spending triggers, wealth identity, and more. No two sessions are the same, so you never run out of material to sharpen your financial mindset.',
+          desc: 'How you think about money is the single biggest factor in whether you build wealth or bleed it. 7 pillars of money psychology -- from spending triggers to wealth identity -- delivered in bite-sized AI-generated lessons designed for quick completion and real retention. Concept cards, swipeable flashcard decks, and instant quizzes. Three difficulty tiers that grow with you. Five minutes per lesson. A permanent shift in how you see every dollar.',
           tag: 'Always fresh'
         },
         'Simulate': {
-          desc: 'Step into real financial scenarios -- job offers, investment decisions, lifestyle trade-offs. Every choice branches into consequences you can see play out. Learn from mistakes that cost nothing.',
+          desc: 'Job offers, impulse buys, market crashes, relationship money drama -- 7 categories of real financial crossroads with branching consequences. Every choice you make leads somewhere different. See how one emotional decision ripples through your finances, and learn to spot the psychology behind it before it costs you in real life.',
           tag: 'AI-powered'
         },
         'Invest': {
-          desc: 'Paper-trade across stocks, ETFs, crypto, property, and more using MindCoins. Watch your portfolio react to real market psychology concepts you\'ve learned. Build investing instincts before risking real money.',
+          desc: '35 virtual assets across 9 classes -- stocks, property, crypto, businesses, even self-improvement. Assets behave like the real thing: properties have vacancy risk, vehicles depreciate daily, businesses need weekly attention or earnings tank. Hidden costs reveal themselves after purchase. The stock market you wish you\'d practised on first.',
           tag: '35 assets'
         },
         'Revision': {
-          desc: '13+ quiz formats from rapid-fire true/false to deep-dive scenario analysis. AI adapts to what you\'ve learned, targeting your weak spots so knowledge actually sticks.',
+          desc: '13 game formats designed to make revision dangerously addictive. Estimation sliders, budget battles, ticking vaults where you risk it all, market pulse headline reactions, and mind reader rounds where you predict what most people get wrong. Timed. Competitive. Built to expose what you think you know.',
           tag: '13+ round types'
         },
         'Feed': {
@@ -2306,7 +2300,7 @@
           tag: 'Always new'
         },
         'MindCoins': {
-          desc: 'A virtual economy that mirrors real money mechanics. Earn them for learning, spend them in simulations, invest them in markets, and yes -- get taxed. The best way to learn money is to use it.',
+          desc: 'A virtual economy with weekly salaries, progressive tax brackets, capital gains on milestones, penalty taxes on wrong answers, and inflation that eats idle cash. 12 pay tiers from Unpaid Intern to Ultra Wealth. The only way to learn how money really works is to earn it, get taxed on it, invest it, and watch it grow -- or disappear.',
           tag: 'Learn money by using it'
         }
       };
@@ -2381,20 +2375,20 @@
 
         if (result.error) {
           if (result.error.code === '23505') {
-            msgEl.textContent = "You're already on the list -- we'll be in touch!";
+            msgEl.textContent = "You're already signed up!";
             msgEl.style.color = 'var(--primary)';
           } else {
             msgEl.textContent = 'Something went wrong. Try again.';
             msgEl.style.color = 'var(--error)';
           }
         } else {
-          msgEl.textContent = "You're in! We'll notify you at launch.";
+          msgEl.textContent = "You're in! Watch your inbox.";
           msgEl.style.color = 'var(--primary)';
           emailInput.value = '';
         }
 
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Notify Me';
+        submitBtn.textContent = 'Sign Me Up';
       });
     })();
   </script>
