@@ -665,7 +665,7 @@
     }
 
     .feature-card {
-      padding: 24px 20px;
+      padding: 28px 20px;
       border-radius: var(--radius-xl);
       background: var(--glass-bg);
       border: 1.5px solid var(--primary);
@@ -673,6 +673,10 @@
       position: relative;
       overflow: hidden;
       cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
     .feature-card::before {
@@ -699,8 +703,8 @@
     }
 
     .feature-icon-wrap {
-      width: 40px;
-      height: 40px;
+      width: 56px;
+      height: 56px;
       border-radius: var(--radius-sm);
       background: rgba(0, 208, 158, 0.08);
       display: flex;
@@ -710,8 +714,8 @@
     }
 
     .feature-icon-wrap svg {
-      width: 18px;
-      height: 18px;
+      width: 28px;
+      height: 28px;
       color: var(--primary);
       stroke: currentColor;
       fill: none;
@@ -727,21 +731,20 @@
     }
 
     .feature-card p {
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
+      display: none;
     }
 
     .feature-card .feature-tag {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 3px 10px;
-      border-radius: var(--radius-pill);
-      background: var(--primary-surface);
-      color: var(--primary);
-      font-size: 0.65rem;
+      display: none;
+    }
+
+    .feature-reveal {
+      margin-top: 8px;
+      font-size: 0.8rem;
       font-weight: 600;
-      letter-spacing: 0.3px;
+      color: var(--text-primary);
+      opacity: 0.7;
+      letter-spacing: 0.02em;
     }
 
     /* Feature modal overlay */
@@ -826,11 +829,11 @@
     @media (max-width: 600px) {
       .features-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
       .feature-card { padding: 16px 14px; }
-      .feature-icon-wrap { width: 36px; height: 36px; margin-bottom: 10px; }
-      .feature-icon-wrap svg { width: 16px; height: 16px; }
+      .feature-icon-wrap { width: 48px; height: 48px; margin-bottom: 10px; }
+      .feature-icon-wrap svg { width: 24px; height: 24px; }
       .feature-card h3 { font-size: 0.9rem; margin-bottom: 4px; }
-      .feature-card p { font-size: 0.75rem; line-height: 1.45; }
-      .feature-card .feature-tag { font-size: 0.6rem; margin-top: 8px; padding: 2px 8px; }
+      .feature-card p { display: none; }
+      .feature-reveal { font-size: 0.75rem; }
       .feature-modal-overlay { padding: 20px; }
       .feature-modal { padding: 28px 24px; }
     }
@@ -1007,124 +1010,138 @@
     }
 
     /* ===================== PRICING ===================== */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      max-width: 880px;
+    .pricing-table {
+      max-width: 640px;
       margin: 0 auto;
-    }
-
-    .pricing-card {
-      padding: 40px 32px;
       border-radius: var(--radius-xxl);
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
+      overflow: hidden;
+    }
+
+    .pricing-table-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      text-align: center;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .pricing-table-head .pt-label {
+      padding: 20px 12px 16px;
+      font-size: 0.8rem;
+      color: var(--text-tertiary);
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .pricing-table-head .pt-free {
+      padding: 20px 12px 16px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .pricing-table-head .pt-premium {
+      padding: 20px 12px 16px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: rgba(0, 208, 158, 0.04);
       position: relative;
-      display: flex;
-      flex-direction: column;
     }
 
-    .pricing-card.featured {
-      border-color: rgba(0, 208, 158, 0.3);
-      background: rgba(0, 208, 158, 0.03);
-    }
-
-    .pricing-card.featured::before {
-      content: '';
+    .pricing-table-head .pt-premium::before {
+      content: 'BEST VALUE';
       position: absolute;
-      inset: -1px;
-      border-radius: var(--radius-xxl);
-      padding: 1px;
-      background: linear-gradient(180deg, rgba(0, 208, 158, 0.3), transparent 60%);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-    }
-
-    .pricing-popular {
-      position: absolute;
-      top: -12px;
+      top: 4px;
       left: 50%;
       transform: translateX(-50%);
-      padding: 5px 18px;
-      border-radius: var(--radius-pill);
-      background: var(--primary);
-      color: var(--bg);
-      font-size: 0.7rem;
+      font-size: 0.55rem;
       font-weight: 700;
       letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    .pricing-tier {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .pricing-card.featured .pricing-tier {
       color: var(--primary);
+      opacity: 0.7;
     }
 
-    .pricing-desc {
-      font-size: 0.875rem;
-      color: var(--text-tertiary);
-      margin-bottom: 28px;
-    }
-
-    .pricing-features {
-      list-style: none;
+    .pricing-table-body {
       padding: 0;
-      margin: 0 0 32px;
-      flex: 1;
     }
 
-    .pricing-features li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 9px 0;
-      font-size: 0.9rem;
+    .pricing-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .pricing-row:last-child {
+      border-bottom: none;
+    }
+
+    .pricing-row .pr-feature {
+      padding: 14px 20px;
+      font-size: 0.85rem;
       color: var(--text-secondary);
+      font-weight: 500;
     }
 
-    .pricing-check {
-      flex-shrink: 0;
-      width: 18px;
-      height: 18px;
+    .pricing-row .pr-value {
+      text-align: center;
+      padding: 14px 8px;
+      font-size: 0.85rem;
+      color: var(--text-tertiary);
+    }
+
+    .pricing-row .pr-value.premium {
+      background: rgba(0, 208, 158, 0.04);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .pricing-row .pr-check {
+      display: inline-flex;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
-      display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: 2px;
     }
 
-    .pricing-card .pricing-check {
+    .pricing-row .pr-check.muted {
       background: var(--surface-elevated);
     }
 
-    .pricing-card .pricing-check svg {
-      stroke: var(--text-tertiary);
-    }
+    .pricing-row .pr-check.muted svg { stroke: var(--text-tertiary); }
 
-    .pricing-card.featured .pricing-check {
+    .pricing-row .pr-check.green {
       background: var(--primary-surface);
     }
 
-    .pricing-card.featured .pricing-check svg {
-      stroke: var(--primary);
+    .pricing-row .pr-check.green svg { stroke: var(--primary); }
+
+    .pricing-row .pr-dash {
+      color: var(--text-tertiary);
+      opacity: 0.3;
     }
 
-    .pricing-btn {
-      display: block;
-      text-align: center;
-      padding: 14px;
+    .pricing-footer {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      border-top: 1px solid var(--glass-border);
+      padding: 20px 0;
+    }
+
+    .pricing-footer .pf-spacer { display: block; }
+
+    .pricing-footer a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 12px;
+      padding: 12px;
       border-radius: var(--radius-pill);
       font-family: inherit;
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       font-weight: 700;
       text-decoration: none;
       border: none;
@@ -1132,23 +1149,23 @@
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    .pricing-btn-outline {
+    .pricing-footer .pf-free {
       background: transparent;
       border: 1px solid var(--glass-border);
       color: var(--text-primary);
     }
 
-    .pricing-btn-outline:hover {
+    .pricing-footer .pf-free:hover {
       border-color: rgba(255,255,255,0.2);
       transform: translateY(-2px);
     }
 
-    .pricing-btn-fill {
+    .pricing-footer .pf-premium {
       background: var(--primary);
       color: var(--bg);
     }
 
-    .pricing-btn-fill:hover {
+    .pricing-footer .pf-premium:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 32px rgba(0, 208, 158, 0.3);
     }
@@ -1160,8 +1177,19 @@
       color: var(--text-tertiary);
     }
 
-    @media (max-width: 640px) {
-      .pricing-grid { grid-template-columns: 1fr; }
+    @media (max-width: 480px) {
+      .pricing-row .pr-feature {
+        padding: 12px 14px;
+        font-size: 0.8rem;
+      }
+      .pricing-row .pr-value {
+        font-size: 0.8rem;
+        padding: 12px 4px;
+      }
+      .pricing-table-head .pt-free,
+      .pricing-table-head .pt-premium {
+        font-size: 0.9rem;
+      }
     }
 
     /* ===================== FAQ ===================== */
@@ -1832,8 +1860,7 @@
           <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
         </div>
         <h3>Learn</h3>
-        <p>Unlimited AI-generated lessons across 7 pillars of money psychology.</p>
-        <span class="feature-tag">Always fresh</span>
+        <span class="feature-reveal">Tap to reveal</span>
       </div>
 
       <div class="feature-card reveal reveal-delay-1">
@@ -1841,8 +1868,7 @@
           <svg viewBox="0 0 24 24"><line x1="6" y1="11" x2="10" y2="11"/><line x1="8" y1="9" x2="8" y2="13"/><line x1="15" y1="12" x2="15.01" y2="12"/><line x1="18" y1="10" x2="18.01" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.544-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg>
         </div>
         <h3>Simulate</h3>
-        <p>Unlimited AI-generated scenarios. See where each decision leads, risk-free.</p>
-        <span class="feature-tag">AI-powered</span>
+        <span class="feature-reveal">Tap to reveal</span>
       </div>
 
       <div class="feature-card reveal reveal-delay-2">
@@ -1850,8 +1876,7 @@
           <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
         </div>
         <h3>Invest</h3>
-        <p>Build a virtual portfolio across 7 asset classes. Learn by doing.</p>
-        <span class="feature-tag">35 assets</span>
+        <span class="feature-reveal">Tap to reveal</span>
       </div>
 
       <div class="feature-card reveal">
@@ -1859,8 +1884,7 @@
           <svg viewBox="0 0 24 24"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/><path d="M12 18v-3a2 2 0 0 1 2-2h.5"/><path d="M12 18v-3a2 2 0 0 0-2-2H9.5"/></svg>
         </div>
         <h3>Revision</h3>
-        <p>Unlimited AI quizzes that help you revise what you've learnt.</p>
-        <span class="feature-tag">13+ round types</span>
+        <span class="feature-reveal">Tap to reveal</span>
       </div>
 
       <div class="feature-card reveal reveal-delay-1">
@@ -1868,8 +1892,7 @@
           <svg viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>
         </div>
         <h3>Feed</h3>
-        <p>Never-ending stream of money psychology facts, concepts, and insights.</p>
-        <span class="feature-tag">Always new</span>
+        <span class="feature-reveal">Tap to reveal</span>
       </div>
 
       <div class="feature-card reveal reveal-delay-2">
@@ -1877,8 +1900,7 @@
           <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.5"/><circle cx="12" cy="12" r="8" fill="currentColor"/><path d="M8 16V8l4 4.2L16 8v8" stroke="var(--bg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
         </div>
         <h3>MindCoins</h3>
-        <p>Earn, spend, invest, and get taxed -- a virtual economy woven through every feature.</p>
-        <span class="feature-tag">Learn money by using it</span>
+        <span class="feature-reveal">Tap to reveal</span>
       </div>
 
     </div>
@@ -1990,70 +2012,68 @@
       <p class="section-subtitle">The free tier isn't a demo -- it's genuinely useful. Premium removes every limit.</p>
     </div>
 
-    <div class="pricing-grid">
-      <div class="pricing-card reveal">
-        <div class="pricing-tier">Free</div>
-        <div class="pricing-desc">Everything you need to start</div>
-        <ul class="pricing-features">
-          <li>
-            <span class="pricing-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            1 lesson per day
-          </li>
-          <li>
-            <span class="pricing-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            1 simulation per day
-          </li>
-          <li>
-            <span class="pricing-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            1 revision quiz per day
-          </li>
-          <li>
-            <span class="pricing-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            10 feed cards per day
-          </li>
-          <li>
-            <span class="pricing-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            Savings account investing
-          </li>
-          <li>
-            <span class="pricing-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            Full gamification + streaks
-          </li>
-        </ul>
-        <a href="#download" class="pricing-btn pricing-btn-outline">Get Started Free</a>
+    <div class="pricing-table reveal">
+      <div class="pricing-table-head">
+        <div class="pt-label">Feature</div>
+        <div class="pt-free">Free</div>
+        <div class="pt-premium">Premium</div>
       </div>
-
-      <div class="pricing-card featured reveal reveal-delay-1">
-        <div class="pricing-popular">Most Popular</div>
-        <div class="pricing-tier">Premium</div>
-        <div class="pricing-desc">Everything. No limits. No ads.</div>
-        <ul class="pricing-features">
-          <li>
-            <span class="pricing-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            Unlimited lessons + simulations
-          </li>
-          <li>
-            <span class="pricing-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            Unlimited revisions + daily challenges
-          </li>
-          <li>
-            <span class="pricing-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            Unlimited feed cards
-          </li>
-          <li>
-            <span class="pricing-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            Full market -- all 7 asset classes
-          </li>
-          <li>
-            <span class="pricing-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            1.5x XP multiplier + 20% paycheck bonus
-          </li>
-          <li>
-            <span class="pricing-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            Full leaderboard access
-          </li>
-        </ul>
-        <a href="#download" class="pricing-btn pricing-btn-fill">Start Free Trial</a>
+      <div class="pricing-table-body">
+        <div class="pricing-row">
+          <div class="pr-feature">Lessons</div>
+          <div class="pr-value">1 / day</div>
+          <div class="pr-value premium">Unlimited</div>
+        </div>
+        <div class="pricing-row">
+          <div class="pr-feature">Simulations</div>
+          <div class="pr-value">1 / day</div>
+          <div class="pr-value premium">Unlimited</div>
+        </div>
+        <div class="pricing-row">
+          <div class="pr-feature">Revision quizzes</div>
+          <div class="pr-value">1 / day</div>
+          <div class="pr-value premium">Unlimited</div>
+        </div>
+        <div class="pricing-row">
+          <div class="pr-feature">Feed cards</div>
+          <div class="pr-value">10 / day</div>
+          <div class="pr-value premium">Unlimited</div>
+        </div>
+        <div class="pricing-row">
+          <div class="pr-feature">Market investing</div>
+          <div class="pr-value">Savings only</div>
+          <div class="pr-value premium">All 7 classes</div>
+        </div>
+        <div class="pricing-row">
+          <div class="pr-feature">Daily challenges</div>
+          <div class="pr-value"><span class="pr-dash">--</span></div>
+          <div class="pr-value premium"><span class="pr-check green"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+        </div>
+        <div class="pricing-row">
+          <div class="pr-feature">XP multiplier</div>
+          <div class="pr-value">1x</div>
+          <div class="pr-value premium">1.5x</div>
+        </div>
+        <div class="pricing-row">
+          <div class="pr-feature">Paycheck bonus</div>
+          <div class="pr-value"><span class="pr-dash">--</span></div>
+          <div class="pr-value premium">+20%</div>
+        </div>
+        <div class="pricing-row">
+          <div class="pr-feature">Leaderboard</div>
+          <div class="pr-value"><span class="pr-dash">--</span></div>
+          <div class="pr-value premium"><span class="pr-check green"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+        </div>
+        <div class="pricing-row">
+          <div class="pr-feature">Gamification + streaks</div>
+          <div class="pr-value"><span class="pr-check muted"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+          <div class="pr-value premium"><span class="pr-check green"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+        </div>
+      </div>
+      <div class="pricing-footer">
+        <div class="pf-spacer"></div>
+        <a href="#download" class="pf-free">Get Started</a>
+        <a href="#download" class="pf-premium">Go Premium</a>
       </div>
     </div>
 
@@ -2322,7 +2342,7 @@
           tag: 'AI-powered'
         },
         'Invest': {
-          desc: '35 virtual assets across 9 classes -- stocks, property, crypto, businesses, even self-improvement. Assets behave like the real thing: properties have vacancy risk, vehicles depreciate daily, businesses need weekly attention or earnings tank. Hidden costs reveal themselves after purchase. The stock market you wish you\'d practised on first.',
+          desc: '35 virtual assets across 7 classes -- stocks, property, crypto, businesses, even self-improvement. Assets behave like the real thing: properties have vacancy risk, vehicles depreciate daily, businesses need weekly attention or earnings tank. Hidden costs reveal themselves after purchase. The stock market you wish you\'d practised on first.',
           tag: '35 assets'
         },
         'Revision': {
