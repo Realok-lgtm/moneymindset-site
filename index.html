@@ -865,7 +865,7 @@
     .screenshot-card img {
       width: 100%;
       border-radius: 20px;
-      border: 1px solid rgba(0, 208, 158, 0.15);
+      border: 2px solid rgba(0, 208, 158, 0.5);
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
@@ -1673,7 +1673,7 @@
       <a href="#how">How It Works</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
-      <a href="#download" class="nav-cta">Stay Updated</a>
+      <a href="#download" class="nav-cta">Download Free</a>
     </div>
   </nav>
 
@@ -1699,8 +1699,8 @@
 
         <div class="hero-actions reveal reveal-delay-3">
           <a href="#download" class="btn-primary">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            Stay in the Loop
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            Download for iOS
           </a>
           <a href="#features" class="btn-secondary">
             See how it works
@@ -1928,6 +1928,18 @@
           <img src="screenshots/leaderboard.png" alt="Leaderboard showing competitive rankings">
           <div class="screenshot-label">Leaderboard</div>
         </div>
+        <div class="screenshot-card">
+          <img src="screenshots/shop.png" alt="Shop with coin packs and power-ups">
+          <div class="screenshot-label">Shop</div>
+        </div>
+        <div class="screenshot-card">
+          <img src="screenshots/achievements.png" alt="Achievements with secret unlockables">
+          <div class="screenshot-label">Achievements</div>
+        </div>
+        <div class="screenshot-card">
+          <img src="screenshots/profile.png" alt="Profile with career title and stats">
+          <div class="screenshot-label">Profile</div>
+        </div>
       </div>
     </div>
   </section>
@@ -2008,7 +2020,7 @@
             Full gamification + streaks
           </li>
         </ul>
-        <a href="#download" class="pricing-btn pricing-btn-outline">Stay Updated</a>
+        <a href="#download" class="pricing-btn pricing-btn-outline">Get Started Free</a>
       </div>
 
       <div class="pricing-card featured reveal reveal-delay-1">
@@ -2041,7 +2053,7 @@
             Full leaderboard access
           </li>
         </ul>
-        <a href="#download" class="pricing-btn pricing-btn-fill">Stay Updated</a>
+        <a href="#download" class="pricing-btn pricing-btn-fill">Start Free Trial</a>
       </div>
     </div>
 
@@ -2118,12 +2130,25 @@
     </div>
   </section>
 
-  <!-- ==================== SIGNUP CTA ==================== -->
+  <!-- ==================== FINAL CTA ==================== -->
   <section class="final-cta" id="download">
     <div class="final-cta-glow"></div>
     <div class="final-cta-content reveal">
       <h2>Your money brain<br>is <span class="text-gradient">waiting</span></h2>
-      <p>Get updates, tips, and exclusive promos straight to your inbox.</p>
+      <p>5 minutes a day. 100 levels to master. Zero risk.<br>Start training the most expensive organ you own.</p>
+      <a href="javascript:void(0)" class="btn-primary" style="font-size: 1.05rem; padding: 18px 40px; max-width: 400px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Download Free on iOS
+      </a>
+      <p style="margin-top: 16px; margin-bottom: 0; font-size: 0.85rem; color: var(--text-tertiary);">No credit card required</p>
+    </div>
+  </section>
+
+  <!-- ==================== EMAIL SIGNUP ==================== -->
+  <section class="section-wrap" style="border-top: 1px solid var(--glass-border); padding: 60px 24px; text-align: center;">
+    <div style="max-width: 520px; margin: 0 auto;">
+      <h3 style="font-size: 1.3rem; color: var(--text-primary); margin-bottom: 8px;">Get exclusive deals and updates</h3>
+      <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 20px;">Drop your email for promo codes, new feature drops, and money mindset tips.</p>
       <form id="waitlist-form" class="waitlist-form" autocomplete="on">
         <input type="text" name="website" id="waitlist-hp" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="waitlist-input-row">
@@ -2132,11 +2157,10 @@
         </div>
         <p id="waitlist-msg" class="waitlist-msg"></p>
       </form>
-      <p style="margin-top: 12px; margin-bottom: 0; font-size: 0.85rem; color: var(--text-tertiary);">Free on iOS. No credit card required.</p>
     </div>
   </section>
 
-  <div class="download-toast" id="downloadToast" style="display:none"></div>
+  <div class="download-toast" id="downloadToast">Coming to the App Store very soon</div>
 
   <!-- ==================== FOOTER ==================== -->
   <footer>
@@ -2263,18 +2287,28 @@
       }, { threshold: 0.5 });
       counters.forEach(function(c) { counterObserver.observe(c); });
 
-      // Scroll-to-waitlist for all CTA links pointing to #download
-      document.querySelectorAll('.pricing-btn, .nav-cta').forEach(function(btn) {
-        btn.addEventListener('click', function(e) {
-          var href = btn.getAttribute('href');
-          if (href === '#download') {
-            e.preventDefault();
-            document.getElementById('download').scrollIntoView({ behavior: 'smooth' });
-            setTimeout(function() {
-              document.getElementById('waitlist-email').focus();
-            }, 600);
-          }
-        });
+      // Download toast -- replace APP_STORE_URL when approved
+      var APP_STORE_URL = ''; // e.g. 'https://apps.apple.com/app/money-mindset/id123456789'
+      var toast = document.getElementById('downloadToast');
+      var toastTimer;
+
+      function handleDownloadClick(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (APP_STORE_URL) {
+          window.location.href = APP_STORE_URL;
+          return;
+        }
+        toast.classList.add('visible');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function() {
+          toast.classList.remove('visible');
+        }, 2500);
+      }
+
+      document.querySelectorAll('.btn-primary, .pricing-btn, .nav-cta').forEach(function(btn) {
+        btn.setAttribute('data-download', 'true');
+        btn.addEventListener('click', handleDownloadClick);
       });
 
       // Feature card modals
